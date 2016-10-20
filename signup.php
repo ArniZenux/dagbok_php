@@ -7,19 +7,19 @@
 
 	if(isset($_POST['submit'])){
 			
-			$unname = trim($_POST['$user']);
+			/*$unname = trim($_POST['$user']);
 			$unpass = trim($_POST['$pass']); 
-
-			if($unname == ""){ return false; }
-			else if($unpass == ""){ return false; }
-			else if(strlen($unpass) < 6) { return false; } 
+			*/
+			if($user == ""){ echo 'false 1'; }
+			else if($pass == ""){ echo 'false 2'; }
+			else if(strlen($pass) < 6) { echo 'false 3'; } 
 			else{
 					mysql_select_db("dagbokMySQL", $con);
-					$res = mysql_query("SELECT * FROM USER WHERE NAME = '$unname';");
+					$res = mysql_query("SELECT * FROM USER WHERE NAME = '$user';");
 					$row = mysql_fetch_array($res); 
 				
-					if($row['NAME'] == $uname){
-						return false; 
+					if($row['NAME'] == $user){
+						echo 'false 4'; 
 					}
 					else{
 						$us->askrifa($con, $unname, $unpass);
