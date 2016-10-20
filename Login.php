@@ -17,16 +17,18 @@
 
 		public function innskra($con, $user, $pass){
 				mysql_select_db("dagbokMySQL", $con);
-				$res = mysql_query("SELECT * FROM USER WHERE NAME = '$user' AND PASS = '$pass';");
+				$res = mysql_query("SELECT * FROM USER WHERE NAME = '$user';");
 				$row = mysql_fetch_array($res); 
 			
 				if($row[0] == $user){
-					$_SESSION['NAME'] = $row[0];
-					return true; 
+					if(password_verify($pass, $row[1])){
+						$_SESSION['NAME'] = $row[0];
+						return true;
+					} 
 				}
+				
 				else{
 					return false; 
-					//$message = 'Ekki rett';
 				}
 			} 
 		

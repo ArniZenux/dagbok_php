@@ -10,6 +10,8 @@
 			/*$unname = trim($_POST['$user']);
 			$unpass = trim($_POST['$pass']); 
 			*/
+			$user = $_POST['user'];
+			$pass = $_POST['pass'];
 			if($user == ""){ echo 'false 1'; }
 			else if($pass == ""){ echo 'false 2'; }
 			else if(strlen($pass) < 6) { echo 'false 3'; } 
@@ -22,9 +24,11 @@
 						echo 'false 4'; 
 					}
 					else{
-						$us->askrifa($con, $unname, $unpass);
+						$us->askrifa($con, $user, $pass);
 					}
 				}
+		//$us->askrifa($con, $user, $pass);				
+		//echo $user; 
 	}
 ?>
 <div class="modal-body">
@@ -44,7 +48,7 @@
 			            	<input type="submit" name="submit" value="Nyskra" class="btn btn-primary btn-lg btn-block">		        
 			            </div>
 		        <?php
-		      		echo $message;
+		      		echo $user;
 		      	?>
 		      		</form>
 	     		</div>
